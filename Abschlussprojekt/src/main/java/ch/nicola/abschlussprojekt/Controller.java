@@ -9,4 +9,10 @@ import java.io.IOException;
 
 public class Controller {
 
+    @FXML
+    private void switchToList(ActionEvent event) throws IOException {
+        MainApp.setSceneRoot("listView");
+
+    }
+
 }
