@@ -4,12 +4,17 @@ import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.property.SimpleObjectProperty;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 
+import java.io.IOException;
+
 public class DetailController {
+
+    private boolean isEditmode;
 
     @FXML
     private final ObjectProperty<Item> selectedClient = new SimpleObjectProperty<>(MainApp.selectedItem);
@@ -85,5 +90,36 @@ public class DetailController {
         String name = selectedClient.getValue().getName();
         Image imageA = new Image(this.getClass().getResourceAsStream(name + ".jpg"));
         this.image.set(imageA);
+
+        isEditmode = false;
+        textPreis.setVisible(false);
+        textName.setVisible(false);
+        textZweck.setVisible(false);
+
+        textName.textProperty().bindBidirectional(selectedClient.get().nameProperty());
+        textZweck.textProperty().bindBidirectional(selectedClient.get().zweckProperty());
+        textPreis.textProperty().bindBidirectional(selectedClient.get().preisProperty());
+    }
+
+    //Back Button event
+    @FXML
+    private void back_action(ActionEvent event) throws IOException {
+        MainApp.setSceneRoot("mainView");
+    }
+
+    //Editmode Button event
+    @FXML
+    private void editmode(ActionEvent event) throws IOException {
+        isEditmode = !isEditmode;
+
+        labelName.setVisible(!isEditmode);
+        textName.setVisible(isEditmode);
+
+        labelZweck.setVisible(!isEditmode);
+        textZweck.setVisible(isEditmode);
+
+        labelPreis.setVisible(!isEditmode);
+        textPreis.setVisible(isEditmode);
+
     }
 }

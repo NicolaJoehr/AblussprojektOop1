@@ -44,6 +44,8 @@
             </Label>
             <Label fx:id="labelPreis" GridPane.columnIndex="2" GridPane.rowIndex="3" text="${controller.selectedClient.preis}"/>
             <TextField fx:id="textPreis" GridPane.columnIndex="2" GridPane.rowIndex="3"/>
+            <Button text="BACK" GridPane.columnIndex="3" GridPane.rowIndex="2" onAction="#back_action"/>
+            <Button text="Bearbeiten" GridPane.columnIndex="3" GridPane.rowIndex="1" onAction="#editmode"/>
         </GridPane>
     </center>
 </BorderPane>
