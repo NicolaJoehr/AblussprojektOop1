@@ -13,6 +13,7 @@ import java.io.IOException;
 public class MainApp extends Application {
     //scene Variable
     private static Stage primaryStage;
+    public static Item selectedItem;
 
     private static ObservableList<Item> itemlist = FXCollections.observableArrayList();
 
@@ -52,7 +53,17 @@ public class MainApp extends Application {
     }
 
     private static Parent loadFXML(String fxml) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(MainApp.class.getResource( fxml + ".fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(MainApp.class.getResource(fxml + ".fxml"));
         return fxmlLoader.load();
+    }
+
+    public static void setSelectedItem(String id) {
+        for (Item item : itemlist) {
+            if (item.getId().equals(id)) {
+                selectedItem = item;
+                break;
+            }
+
+        }
     }
 }

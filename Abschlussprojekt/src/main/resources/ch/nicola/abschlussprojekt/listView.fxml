@@ -1,14 +1,49 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.geometry.Insets?>
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ch.nicola.abschlussprojekt.DetailController">
+    <center>
+        <GridPane BorderPane.alignment="CENTER">
+            <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0"/>
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0"/>
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="150"/>
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0"/>
+            </columnConstraints>
+            <rowConstraints>
+                <RowConstraints vgrow="ALWAYS" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="NEVER" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="NEVER" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="NEVER" />
+                <RowConstraints vgrow="ALWAYS" />
+            </rowConstraints>
+            <ImageView GridPane.columnIndex="0" GridPane.rowIndex="0" GridPane.rowSpan="5" fitHeight="150.0" fitWidth="200.0" image="${controller.image}"/>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="ch.nicola.abschlussprojekt.Controller"
-            prefHeight="400.0" prefWidth="600.0">
-
-</AnchorPane>
+            <Label GridPane.rowIndex="1" GridPane.columnIndex="1" text="Name:">
+                <GridPane.margin>
+                    <Insets right="10"/>
+                </GridPane.margin>
+            </Label>
+            <Label fx:id="labelName" GridPane.columnIndex="2" GridPane.rowIndex="1" text="${controller.selectedClient.name}"/>
+            <TextField fx:id="textName" GridPane.columnIndex="2" GridPane.rowIndex="1"/>
+            <Label GridPane.rowIndex="2" GridPane.columnIndex="1" text="Verwendungszweck:">
+                <GridPane.margin>
+                    <Insets right="10"/>
+                </GridPane.margin>
+            </Label>
+            <Label fx:id="labelZweck" GridPane.columnIndex="2" GridPane.rowIndex="2" text="${controller.selectedClient.zweck}"/>
+            <TextField fx:id="textZweck" GridPane.columnIndex="2" GridPane.rowIndex="2"/>
+            <Label GridPane.rowIndex="3" GridPane.columnIndex="1" text="Preisspanne:">
+                <GridPane.margin>
+                    <Insets right="10"/>
+                </GridPane.margin>
+            </Label>
+            <Label fx:id="labelPreis" GridPane.columnIndex="2" GridPane.rowIndex="3" text="${controller.selectedClient.preis}"/>
+            <TextField fx:id="textPreis" GridPane.columnIndex="2" GridPane.rowIndex="3"/>
+        </GridPane>
+    </center>
+</BorderPane>

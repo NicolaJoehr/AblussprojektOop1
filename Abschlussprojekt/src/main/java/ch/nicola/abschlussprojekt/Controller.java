@@ -11,6 +11,9 @@ public class Controller {
 
     @FXML
     private void switchToList(ActionEvent event) throws IOException {
+        Node node = (Node) event.getSource();
+        String id = (String) node.getUserData();
+        MainApp.setSelectedItem(id);
         MainApp.setSceneRoot("listView");
 
     }
